@@ -1,26 +1,200 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f5f5f4;
+  --card: #ffffff;
+  --card-soft: #f5f5f4;
+  --text: #1c1917;
+  --muted: #78716c;
+  --border: #e7e5e4;
+  --primary: #1c1917;
+  --primary-foreground: #ffffff;
+  --accent: #e7e5e4;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="stone"] {
+  --bg: #f5f5f4;
+  --card: #ffffff;
+  --card-soft: #f5f5f4;
+  --text: #1c1917;
+  --muted: #78716c;
+  --border: #e7e5e4;
+  --primary: #1c1917;
+  --primary-foreground: #ffffff;
+  --accent: #e7e5e4;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="sage"] {
+  --bg: #f2f5f1;
+  --card: #ffffff;
+  --card-soft: #edf3ea;
+  --text: #1f2a22;
+  --muted: #6f7d73;
+  --border: #d8e3d7;
+  --primary: #5f7a65;
+  --primary-foreground: #ffffff;
+  --accent: #dce8db;
+}
+
+[data-theme="rose"] {
+  --bg: #fbf4f6;
+  --card: #ffffff;
+  --card-soft: #f8ecef;
+  --text: #3c2a31;
+  --muted: #8c6c76;
+  --border: #efd9e0;
+  --primary: #b67c8e;
+  --primary-foreground: #ffffff;
+  --accent: #f2dde4;
+}
+
+[data-theme="sky"] {
+  --bg: #f3f7fb;
+  --card: #ffffff;
+  --card-soft: #ebf2f9;
+  --text: #22313f;
+  --muted: #6c7b8a;
+  --border: #dbe6f1;
+  --primary: #6b91b5;
+  --primary-foreground: #ffffff;
+  --accent: #dde8f3;
+}
+
+[data-theme="clay"] {
+  --bg: #f8f3f1;
+  --card: #ffffff;
+  --card-soft: #f2e9e5;
+  --text: #3a2a24;
+  --muted: #8a6f64;
+  --border: #e8d8d1;
+  --primary: #b07a67;
+  --primary-foreground: #ffffff;
+  --accent: #eadbd4;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+/* Premium UI helpers */
+
+.ui-card {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.ui-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+  will-change: transform;
+}
+
+.ui-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.ui-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.ui-soft {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.ui-soft:hover {
+  transform: translateY(-1px);
+}
+
+.ui-fade-in {
+  animation: uiFadeIn 240ms ease;
+}
+
+@keyframes uiFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ui-modal-overlay {
+  animation: uiOverlayFade 180ms ease;
+}
+
+.ui-modal-panel {
+  animation: uiModalPop 220ms ease;
+}
+
+@keyframes uiOverlayFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes uiModalPop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.ui-modal-overlay-closing {
+  animation: uiOverlayFadeOut 180ms ease forwards;
+}
+
+.ui-modal-panel-closing {
+  animation: uiModalClose 180ms ease forwards;
+}
+
+@keyframes uiOverlayFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes uiModalClose {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
 }

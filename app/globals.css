@@ -198,3 +198,16 @@ body {
     transform: translateY(8px) scale(0.98);
   }
 }
+/* Mobile form fix */
+.ui-input {
+  font-size: 16px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .ui-input {
+    font-size: 14px;
+  }
+}

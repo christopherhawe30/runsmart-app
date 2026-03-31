@@ -159,7 +159,7 @@ export default function SettingsPage() {
                   placeholder="Chris"
                   value={draftProfile.name}
                   onChange={(e) => handleDraftChange("name", e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
@@ -173,7 +173,7 @@ export default function SettingsPage() {
                   placeholder="30"
                   value={draftProfile.age}
                   onChange={(e) => handleDraftChange("age", e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
@@ -212,7 +212,7 @@ export default function SettingsPage() {
                 onChange={(e) =>
                   handleDraftChange("focusPhrase", e.target.value)
                 }
-                className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                 style={{
                   backgroundColor: "var(--card-soft)",
                   borderColor: "var(--border)",
@@ -293,7 +293,7 @@ export default function SettingsPage() {
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between gap-3">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                       <div>
                         <p className="text-base font-semibold">{item.label}</p>
                         <p
@@ -306,7 +306,7 @@ export default function SettingsPage() {
 
                       {isActive && (
                         <span
-                          className="rounded-full px-3 py-1 text-xs font-medium"
+                          className="inline-flex w-fit rounded-full px-3 py-1 text-xs font-medium"
                           style={{
                             backgroundColor: "var(--primary)",
                             color: "var(--primary-foreground)",

@@ -889,7 +889,7 @@ export default function RunsPage() {
                   placeholder="Easy Run Glass House"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
@@ -907,6 +907,7 @@ export default function RunsPage() {
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
+                    WebkitAppearance: "none",
                   }}
                 />
               </div>
@@ -920,7 +921,7 @@ export default function RunsPage() {
                     placeholder="5.50"
                     value={distance}
                     onChange={(e) => setDistance(e.target.value)}
-                    className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                    className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                     style={{
                       backgroundColor: "var(--card-soft)",
                       borderColor: "var(--border)",
@@ -934,7 +935,7 @@ export default function RunsPage() {
                     placeholder="00:33:30"
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                    className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                     style={{
                       backgroundColor: "var(--card-soft)",
                       borderColor: "var(--border)",
@@ -949,7 +950,7 @@ export default function RunsPage() {
                   placeholder="152"
                   value={heartRate}
                   onChange={(e) => setHeartRate(e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
@@ -964,7 +965,7 @@ export default function RunsPage() {
                 <select
                   value={type}
                   onChange={(e) => setType(e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
@@ -1057,7 +1058,7 @@ export default function RunsPage() {
                 <input
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
@@ -1075,6 +1076,7 @@ export default function RunsPage() {
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
+                    WebkitAppearance: "none",
                   }}
                 />
               </div>
@@ -1087,7 +1089,7 @@ export default function RunsPage() {
                   <input
                     value={editDistance}
                     onChange={(e) => setEditDistance(e.target.value)}
-                    className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                    className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                     style={{
                       backgroundColor: "var(--card-soft)",
                       borderColor: "var(--border)",
@@ -1100,7 +1102,7 @@ export default function RunsPage() {
                   <input
                     value={editTime}
                     onChange={(e) => setEditTime(e.target.value)}
-                    className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                    className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                     style={{
                       backgroundColor: "var(--card-soft)",
                       borderColor: "var(--border)",
@@ -1114,7 +1116,7 @@ export default function RunsPage() {
                 <input
                   value={editHeartRate}
                   onChange={(e) => setEditHeartRate(e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
@@ -1129,7 +1131,7 @@ export default function RunsPage() {
                 <select
                   value={editType}
                   onChange={(e) => setEditType(e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",

@@ -348,7 +348,7 @@ export default function Home() {
                   placeholder="Easy Run Glass House"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
@@ -366,6 +366,7 @@ export default function Home() {
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
+                    WebkitAppearance: "none",
                   }}
                 />
               </div>
@@ -379,7 +380,7 @@ export default function Home() {
                     placeholder="5.50"
                     value={distance}
                     onChange={(e) => setDistance(e.target.value)}
-                    className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                    className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                     style={{
                       backgroundColor: "var(--card-soft)",
                       borderColor: "var(--border)",
@@ -393,7 +394,7 @@ export default function Home() {
                     placeholder="00:33:30"
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                    className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                     style={{
                       backgroundColor: "var(--card-soft)",
                       borderColor: "var(--border)",
@@ -408,7 +409,7 @@ export default function Home() {
                   placeholder="152"
                   value={heartRate}
                   onChange={(e) => setHeartRate(e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",
@@ -423,7 +424,7 @@ export default function Home() {
                 <select
                   value={type}
                   onChange={(e) => setType(e.target.value)}
-                  className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition"
+                  className="ui-input rounded-2xl border px-4 py-3 outline-none transition"
                   style={{
                     backgroundColor: "var(--card-soft)",
                     borderColor: "var(--border)",

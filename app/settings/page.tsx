@@ -271,7 +271,7 @@ export default function SettingsPage() {
                   <button
                     key={item.name}
                     onClick={() => applyTheme(item.name)}
-                    className="ui-button rounded-3xl border p-5 text-left transition"
+                    className="ui-button rounded-3xl border p-4 text-left transition sm:p-5"
                     style={{
                       backgroundColor: "var(--card-soft)",
                       borderColor: isActive
@@ -280,33 +280,37 @@ export default function SettingsPage() {
                       boxShadow: isActive ? "0 0 0 1px var(--primary)" : "none",
                     }}
                   >
-                    <div className="mb-4 flex items-center gap-2">
-                      {item.preview.map((color) => (
-                        <span
-                          key={color}
-                          className="h-5 w-5 rounded-full border"
-                          style={{
-                            backgroundColor: color,
-                            borderColor: "rgba(0,0,0,0.08)",
-                          }}
-                        />
-                      ))}
-                    </div>
+                    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                      <div className="min-w-0">
+                        <div className="mb-3 flex items-center gap-2">
+                          {item.preview.map((color) => (
+                            <span
+                              key={color}
+                              className="h-5 w-5 rounded-full border"
+                              style={{
+                                backgroundColor: color,
+                                borderColor: "rgba(0,0,0,0.08)",
+                              }}
+                            />
+                          ))}
+                        </div>
 
-                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                      <div>
-                        <p className="text-base font-semibold">{item.label}</p>
-                        <p
-                          className="mt-1 text-sm"
-                          style={{ color: "var(--muted)" }}
-                        >
-                          {item.description}
-                        </p>
+                        <div className="md:flex md:items-center md:gap-3">
+                          <p className="text-base font-semibold">
+                            {item.label}
+                          </p>
+                          <p
+                            className="mt-1 text-sm md:mt-0"
+                            style={{ color: "var(--muted)" }}
+                          >
+                            {item.description}
+                          </p>
+                        </div>
                       </div>
 
                       {isActive && (
                         <span
-                          className="inline-flex w-fit rounded-full px-3 py-1 text-xs font-medium"
+                          className="inline-flex w-fit shrink-0 rounded-full px-3 py-1 text-xs font-medium"
                           style={{
                             backgroundColor: "var(--primary)",
                             color: "var(--primary-foreground)",

@@ -221,11 +221,11 @@ export default function RunsPage() {
   }
 
   function handleDelete(id: number) {
-    setRuns(runs.filter((run) => run.id !== id));
+    const confirmed = window.confirm("Delete this planned run?");
 
-    if (editingId === id) {
-      closeEditModal();
-    }
+    if (!confirmed) return;
+
+    setRuns(runs.filter((r) => r.id !== id));
   }
 
   function handleStartEdit(run: Run) {

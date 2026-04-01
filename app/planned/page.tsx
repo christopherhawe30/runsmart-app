@@ -37,8 +37,17 @@ function isSameDay(dateA: Date, dateB: Date) {
   );
 }
 
+function isTodayOrFuture(dateString: string) {
+  const itemDate = new Date(dateString + "T00:00:00");
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return itemDate >= today;
+}
+
 export default function PlannedRunsPage() {
   const [runs, setRuns] = useState<PlannedRun[]>([]);
+  const [loggedRuns, setLoggedRuns] = useState<{ date: string }[]>([]);
   const [hasLoaded, setHasLoaded] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,7 +69,11 @@ export default function PlannedRunsPage() {
 
   useEffect(() => {
     const saved = localStorage.getItem("plannedRuns");
+    const savedLoggedRuns = localStorage.getItem("runs");
+
     if (saved) setRuns(JSON.parse(saved));
+    if (savedLoggedRuns) setLoggedRuns(JSON.parse(savedLoggedRuns));
+
     setHasLoaded(true);
   }, []);
 
@@ -104,6 +117,10 @@ export default function PlannedRunsPage() {
   }
 
   function handleDelete(id: number) {
+    const confirmed = window.confirm("Delete this planned run?");
+
+    if (!confirmed) return;
+
     setRuns(runs.filter((r) => r.id !== id));
   }
   const thisWeekDays = (() => {
@@ -139,6 +156,20 @@ export default function PlannedRunsPage() {
 
     return sum + dayTotal;
   }, 0);
+
+  const nextRun = [...runs]
+    .filter((run) => {
+      const alreadyLoggedForThatDate = loggedRuns.some(
+        (loggedRun) => loggedRun.date === run.date,
+      );
+
+      return isTodayOrFuture(run.date) && !alreadyLoggedForThatDate;
+    })
+    .sort(
+      (a, b) =>
+        new Date(a.date + "T00:00:00").getTime() -
+        new Date(b.date + "T00:00:00").getTime(),
+    )[0];
 
   function handleStartEdit(run: PlannedRun) {
     setEditingId(run.id);
@@ -229,6 +260,70 @@ export default function PlannedRunsPage() {
               Back to Dashboard
             </Link>
           </div>
+
+          <section
+            className="ui-card ui-fade-in mb-6 rounded-3xl border p-6 shadow-sm"
+            style={{
+              backgroundColor: "var(--card)",
+              borderColor: "var(--border)",
+            }}
+          >
+            <div className="mb-3">
+              <p
+                className="text-sm font-medium"
+                style={{ color: "var(--muted)" }}
+              >
+                Up Next
+              </p>
+              <h2 className="mt-1 text-2xl font-semibold tracking-tight">
+                Next Run
+              </h2>
+            </div>
+
+            {nextRun ? (
+              <div
+                className="rounded-2xl border p-4"
+                style={{
+                  backgroundColor: "var(--card-soft)",
+                  borderColor: "var(--border)",
+                }}
+              >
+                <div className="mb-2 flex flex-wrap items-center gap-2">
+                  <p className="text-base font-semibold">{nextRun.name}</p>
+                  <span
+                    className="rounded-full px-2.5 py-1 text-xs font-medium"
+                    style={{
+                      backgroundColor: "var(--card)",
+                      color: "var(--muted)",
+                    }}
+                  >
+                    {nextRun.type}
+                  </span>
+                </div>
+
+                <p className="text-sm" style={{ color: "var(--muted)" }}>
+                  {formatDate(nextRun.date)}
+                </p>
+
+                <p className="mt-2 text-sm font-medium">
+                  {nextRun.distance} km planned
+                </p>
+              </div>
+            ) : (
+              <div
+                className="rounded-2xl border border-dashed p-6 text-center"
+                style={{
+                  backgroundColor: "var(--card-soft)",
+                  borderColor: "var(--border)",
+                }}
+              >
+                <p className="text-sm font-medium">No upcoming runs planned</p>
+                <p className="mt-1 text-sm" style={{ color: "var(--muted)" }}>
+                  Add a planned run to see your next session here.
+                </p>
+              </div>
+            )}
+          </section>
 
           <section
             className="ui-card ui-fade-in mb-6 rounded-3xl border p-6 shadow-sm"

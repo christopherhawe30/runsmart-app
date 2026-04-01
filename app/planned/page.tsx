@@ -424,7 +424,7 @@ export default function PlannedRunsPage() {
                       ))
                     ) : (
                       <p className="text-xs" style={{ color: "var(--muted)" }}>
-                        No run planned
+                        Rest day
                       </p>
                     )}
                   </div>
